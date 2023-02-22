@@ -1,11 +1,28 @@
-import logo from './logo.svg';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ArticleListPage from './pages/ArticleListPage';
+import ArticlePage from './pages/ArticlePage';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import NavBar from './NavBar';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-     <h1>this is blog page</h1>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
+        <div id='page-body'>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/articles' element={<ArticleListPage />} />
+            <Route path='/articles/:articleId' element={<ArticlePage />} />
+
+          </Routes>
+
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
