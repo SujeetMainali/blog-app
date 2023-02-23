@@ -1,10 +1,15 @@
+import articles from "./articleContent";
+import { Link } from "react-router-dom";
+import ArticlesList from "../components/ArticlesList";
+
 const ArticleListPage = ()=>{
     return(
-        <div>
+        <>
             <h1>
-                This is article list  page!!!
+                Articles
             </h1>
-        </div>
+        <ArticlesList articles = {articles} />
+        </>
     )
 }
 

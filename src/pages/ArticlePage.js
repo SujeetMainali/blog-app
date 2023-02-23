@@ -1,10 +1,22 @@
-const ArticlePage = ()=>{
-    return(
-        <div>
+import { useParams } from "react-router-dom";
+import articles from './articleContent'
+
+const ArticlePage = () => {
+    // const params = useParams();
+    // const { articleId } = params;
+    const { articleId } = useParams();
+    //all three ways are correct ways to get id in url parameters.
+    const article = articles.find(article => article.name === articleId)
+    return (
+        <>
             <h1>
-                This is article page!!!
+                {article.name}
             </h1>
-        </div>
+                {article.content.map((paragraph, i) =>(
+                    <p key={i}>{paragraph}</p>
+                ))}
+            
+            </>
     )
 }
 
