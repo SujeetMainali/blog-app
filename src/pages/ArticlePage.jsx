@@ -4,6 +4,7 @@ import articles from './articleContent';
 import axios from 'axios';
 import NotFoundPage from "./NotFoundPage";
 import CommentList from "../components/commentList";
+import AddCommentForm from "../components/AddCommentForm";
 
 const ArticlePage = () => {
     // const params = useParams();
@@ -37,14 +38,19 @@ const ArticlePage = () => {
             <h1>
                 {article.name}
             </h1>
-            <div className="upvotes-section">
-                <button onClick={addUpvote}>Upvote</button>
-                <p>this article has {articleInfo.upvotes} upvotes </p>
-            </div>
+          
 
             {article.content.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
             ))}
+              <div className="upvotes-section">
+              <p>this article has {articleInfo.upvotes} upvotes </p> <br />
+                <button onClick={addUpvote}>Upvote</button> 
+                
+            </div>
+            <AddCommentForm articleName={articleId}
+                onArticleUpdated = {updatedArticle =>setArticleInfo(updatedArticle)}
+            />
             <CommentList comments={articleInfo.comments} />
 
         </>
